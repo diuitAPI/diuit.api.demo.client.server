@@ -58,8 +58,8 @@ router.post('/login', function(req, res, next) {
           payload: {
             iss: client.appId, // issuer, who issue this certificate, in this case, the client yourself
             sub: user.id, // subject, who is granted access in this certificate, in this case, the user who is trying to login
-            iat: moment().format(), // issue at, when the certificate is issued at
-            exp: moment().add({weeks: 1}).format(), // expired, when the certification will expire
+            iat: moment().format().toString(), // issue at, when the certificate is issued at
+            exp: moment().add({weeks: 1}).format().toString(), // expired, when the certification will expire
             nonce: resp.nonce // nonce, the server nonce, to prevent replay attack
           },
           privateKey: client.encryptionKey // the key used for encrypting the certificate
